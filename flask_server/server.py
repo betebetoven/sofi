@@ -22,7 +22,7 @@ cont = 0
 def sofi():
     global cont
     cont = cont+1
-    sofi_traduce()
+    #sofi_traduce()
 
     
     
