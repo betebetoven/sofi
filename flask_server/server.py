@@ -1,5 +1,8 @@
+from ast import Sub
 from flask import Flask
 from flask_cors import CORS
+from flask_wtf import FlaskForm
+from wtforms import FileField,SubmitField
 from codecs import latin_1_encode
 import tabula
 from tkinter.filedialog import askopenfilename
@@ -10,6 +13,9 @@ import sys, time
  
 app = Flask(__name__)
 CORS(app)
+class UploadFileForm(FlaskForm):
+    file = FileField("File")
+    submit = SubmitField("Upload File")
 #Funcionamiento básico del backend, aun por arreglar
 #porque debe recibir de entrada un archivo pdf y 
 cont = 0
