@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from codecs import latin_1_encode
 import tabula
 from tkinter.filedialog import askopenfilename
@@ -8,28 +9,19 @@ import xlsxwriter
 import sys, time
  
 app = Flask(__name__)
+CORS(app)
 #Funcionamiento básico del backend, aun por arreglar
 #porque debe recibir de entrada un archivo pdf y 
-
-    
-
-
-cont = 0
-
-
-
+#cont = 0
 @app.route("/sofi")
 def sofi():
-    global cont
-    cont = cont+1
+    #global cont
+    #cont = cont+1
     #sofi_traduce()
-
-    
-    
-    return{"sofi":[hoa(),"me","llamo","sofi",cont]}
+    return{"sofi":["aca va hoa()","me","llamo","sofi","aca va el cont de entrdas"]}
 
 if __name__=="__main__":
-    def progressBar(count, total, suffix=''):
+    """def progressBar(count, total, suffix=''):
 	    barLength = 60
 	    filledLength = int(round(barLength * count / float(total)))
 	    percent = round(100.0 * count / float(total), 1)
@@ -87,7 +79,9 @@ if __name__=="__main__":
             print("\nREALIZACION EXITOSA") 
         workbook.close()
         return
-    
+    """
+
+
 
     app.run(debug=True)
     
