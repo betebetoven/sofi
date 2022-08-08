@@ -1,5 +1,5 @@
 from ast import Sub
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from flask_wtf import FlaskForm
 from wtforms import FileField,SubmitField
@@ -23,7 +23,7 @@ cont = 0
 def sofi():
     global cont
     cont = cont+1
-    #sofi_traduce()
+    sofi_traduce()
     return{"sofi":["aca va hoa()","me","llamo","sofi",cont]}
 
 if __name__=="__main__":
