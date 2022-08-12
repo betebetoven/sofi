@@ -1,8 +1,12 @@
-from ast import Sub
+#from ast import Sub
+#from crypt import methods
 from flask import Flask, render_template
 from flask_cors import CORS
 from flask_wtf import FlaskForm
 from wtforms import FileField,SubmitField
+from werkzeug.utils import secure_filename
+import os
+from wtforms.validators import InputRequired
 from codecs import latin_1_encode
 import tabula
 from tkinter.filedialog import askopenfilename
@@ -13,18 +17,29 @@ import sys, time
  
 app = Flask(__name__)
 CORS(app)
+app.config['SECRET_KEY'] = 'test'
+app.config['UPLOAD_FOLDER'] = 'static/Files'
 class UploadFileForm(FlaskForm):
-    file = FileField("File")
+    file = FileField("File", validators=[InputRequired()])
     submit = SubmitField("Upload File")
 #Funcionamiento básico del backend, aun por arreglar
 #porque debe recibir de entrada un archivo pdf y 
 cont = 0
-@app.route("/sofi")
+@app.route("/sofi", methods = ['GET',"POST"])
 def sofi():
     global cont
     cont = cont+1
-    sofi_traduce()
-    return{"sofi":["aca va hoa()","me","llamo","sofi",cont]}
+    form = UploadFileForm()
+    dirtub = ""
+    if form.validate_on_submit():
+        file = form.file.data
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
+        dirtub = os.path.abspath("static/Files/"+secure_filename(file.filename))
+        time.sleep(5)
+        sofi_traduce(dirtub)
+        return "FIle has been uploaded desde todo jejej"+ dirtub
+    
+    return render_template('index.html', form = form)
 
 if __name__=="__main__":
     def progressBar(count, total, suffix=''):
@@ -36,9 +51,9 @@ if __name__=="__main__":
 	    sys.stdout.flush()
     def hoa():
         return("probando ota vez el arumento inicial")
-    def sofi_traduce():
+    def sofi_traduce(direccion):
         estados_cuentas = []
-        direccion = askopenfilename()
+        #direccion = askopenfilename()
         nombre = direccion.split('/')
         for n in range(4):
             nombre[len(nombre)-1] = nombre[len(nombre)-1][:-1]
@@ -71,7 +86,8 @@ if __name__=="__main__":
                 my_list.append(tmp)
             progressBar(progresocont,progresocont)     
             estados_cuentas.append(my_list)   
-            workbook = xlsxwriter.Workbook(asksaveasfilename(initialfile=nombre[len(nombre)-1], defaultextension=".xlsx"))
+            #workbook = xlsxwriter.Workbook(asksaveasfilename(initialfile=nombre[len(nombre)-1], defaultextension=".xlsx"))
+            workbook = xlsxwriter.Workbook(nombre[len(nombre)-1]+".xlsx")
             worksheet = workbook.add_worksheet()
             col = 0
             print("\n")
