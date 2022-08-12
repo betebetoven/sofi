@@ -120,7 +120,10 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-static/
+*.xlsx
+*.pdf
+*.jpg
+*.PNG
 .env
 .venv
 env/
