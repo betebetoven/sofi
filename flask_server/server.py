@@ -1,6 +1,6 @@
 #from ast import Sub
 #from crypt import methods
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 from flask_cors import CORS
 from flask_wtf import FlaskForm
 from wtforms import FileField,SubmitField
@@ -36,8 +36,12 @@ def sofi():
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
         dirtub = os.path.abspath("static/Files/"+secure_filename(file.filename))
         time.sleep(5)
-        sofi_traduce(dirtub)
-        return "FIle has been uploaded desde todo jejej"+ dirtub
+        archivo = sofi_traduce(dirtub)
+        archivo2 = os.path.abspath("static/Files/"+secure_filename(archivo +".xlsx"))
+        nombre = dirtub.split('/')
+        for n in range(4):
+            nombre[len(nombre)-1] = nombre[len(nombre)-1][:-1]
+        return send_file(nombre[len(nombre)-1]+".xlsx")
     
     return render_template('index.html', form = form)
 
@@ -100,7 +104,7 @@ if __name__=="__main__":
             progressBar(len(my_list),len(my_list))
             print("\nREALIZACION EXITOSA") 
         workbook.close()
-        return
+        return nombre[len(nombre)-1]
     
 
 
