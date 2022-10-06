@@ -9,8 +9,8 @@ import os
 from wtforms.validators import InputRequired
 from codecs import latin_1_encode
 import tabula
-from tkinter.filedialog import askopenfilename
-from tkinter.filedialog import asksaveasfilename
+#from tkinter.filedialog import askopenfilename
+#from tkinter.filedialog import asksaveasfilename
 import csv
 import xlsxwriter
 import sys, time
