@@ -24,6 +24,7 @@ class UploadFileForm(FlaskForm):
     submit = SubmitField("Upload File")
 #Funcionamiento básico del backend, aun por arreglar
 #porque debe recibir de entrada un archivo pdf y 
+#esto es lo nuevo que deberia de agregar
 cont = 0
 @app.route("/sofi", methods = ['GET',"POST"])
 def sofi():
