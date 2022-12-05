@@ -48,6 +48,7 @@ def sofi():
     return render_template('index.html', form = form)
 
 if __name__=="__main__":
+    print("HOLA MUNDO SI ESTA CORRIENDO")
     #export FLASK_ENV=production
     #export FLASK_APP=myapp
     #gunicorn myapp:app
