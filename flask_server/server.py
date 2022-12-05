@@ -14,6 +14,7 @@ import tabula
 import csv
 import xlsxwriter
 import sys, time
+from myapp import app
  
 app = Flask(__name__)
 CORS(app)
