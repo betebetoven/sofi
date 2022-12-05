@@ -48,9 +48,9 @@ def sofi():
     return render_template('index.html', form = form)
 
 if __name__=="__main__":
-    export FLASK_ENV=production
-    export FLASK_APP=myapp
-    gunicorn myapp:app
+    #export FLASK_ENV=production
+    #export FLASK_APP=myapp
+    #gunicorn myapp:app
     def progressBar(count, total, suffix=''):
 	    barLength = 60
 	    filledLength = int(round(barLength * count / float(total)))
