@@ -48,8 +48,9 @@ def sofi():
         
 
 
-
-        return send_file(nombre[len(nombre)-1]+".xlsx")
+        response = send_file(nombre[len(nombre)-1]+".xlsx")
+        os.remove(f'{nombre[len(nombre)-1]}.xlsx')
+        return response
         
     
     return render_template('index.html', form = form)
