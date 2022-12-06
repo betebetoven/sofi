@@ -62,7 +62,7 @@ def sofi_traduce(direccion):
     for n in range(4):
         nombre[len(nombre)-1] = nombre[len(nombre)-1][:-1]
     print(nombre[len(nombre)-1])
-    tabula.convert_into(direccion, "output.txt", output_format="csv", pages='all')
+    tabula.convert_into(direccion, f'{nombre[len(nombre)-1]}.txt', output_format="csv", pages='all')
     with open("output.txt", encoding = 'latin-1') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
         my_list = []
