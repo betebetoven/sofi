@@ -43,7 +43,14 @@ def sofi():
         nombre = dirtub.split('/')
         for n in range(4):
             nombre[len(nombre)-1] = nombre[len(nombre)-1][:-1]
+        #aca va la eliminacion de los archivos indeseados en el servidor, los xls vamos a tener que retirarlos a mano
+        os.remove(f'static/Files/{secure_filename(file.filename)}')
+        
+
+
+
         return send_file(nombre[len(nombre)-1]+".xlsx")
+        
     
     return render_template('index.html', form = form)
 def progressBar(count, total, suffix=''):
@@ -63,7 +70,7 @@ def sofi_traduce(direccion):
         nombre[len(nombre)-1] = nombre[len(nombre)-1][:-1]
     print(nombre[len(nombre)-1])
     tabula.convert_into(direccion, f'{nombre[len(nombre)-1]}.txt', output_format="csv", pages='all')
-    with open("output.txt", encoding = 'latin-1') as csv_file:
+    with open(f'{nombre[len(nombre)-1]}.txt', encoding = 'latin-1') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', quotechar='"')
         my_list = []
         cont = 1
@@ -104,6 +111,7 @@ def sofi_traduce(direccion):
         progressBar(len(my_list),len(my_list))
         print("\nREALIZACION EXITOSA") 
     workbook.close()
+    os.remove(f'{nombre[len(nombre)-1]}.txt')
     return nombre[len(nombre)-1]
     
 
