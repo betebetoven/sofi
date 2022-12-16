@@ -61,23 +61,35 @@ body {
 </head> 
 
 <body>
-  <div class="wrapper">
-  <div class="file-upload">
-    <input type="file">
-    <i class="fa fa-arrow-up"></i>
-  </div>
-  <form method='POST' enctype='multipart/form-data'>
-        {{form.hidden_tag()}}
-        {{form.file()}}
-        {{form.submit()}}
-    </form>
-</div>
-
   
-
-
-
-
- 
-</body>
+  <div class="wrapper">
+    <form method='POST' enctype='multipart/form-data'>
+      {{form.hidden_tag()}}
+            <div class="file-upload">
+                  <input id="file" name="file" required="" type="file">
+                  <i class="fa fa-arrow-up"></i>  
+             </div>
+  
+             <div class="file-upload">
+             <input id="submit" name="submit" required=""  type="submit" >
+             <i class="fa fa-arrow-up"></i>
+            </div>
+            </form>
+  </div>
+  
+    <form method='POST' enctype='multipart/form-data'>
+          {{form.hidden_tag()}}
+          {{form.file()}}
+          {{form.submit()}}
+          
+    </form>
+  
+  
+    
+  
+  
+  
+  
+   
+  </body>
 </html>
