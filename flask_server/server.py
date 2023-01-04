@@ -117,7 +117,7 @@ def prueba():
         for n in df_list:
 
             csv_stream = n.to_csv(index=False)
-            print(csv_stream)
+            #print(csv_stream)
             lines = csv_stream.split("\n")
             for i, line in enumerate(lines):
                 for word, replacement in palabrasReservadas.items():
