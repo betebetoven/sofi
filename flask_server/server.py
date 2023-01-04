@@ -149,7 +149,7 @@ def prueba():
 
         # Reset stream position to beginning
         xlsx_stream.seek(0)
-        return send_file(xlsx_stream, attachment_filename=f'{file_name}.xlsx', as_attachment=True)
+        return send_file(xlsx_stream, download_name=f'{file_name}.xlsx', as_attachment=True)
         
     
     return render_template('index.html', form = form)
