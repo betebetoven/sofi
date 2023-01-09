@@ -1,22 +1,115 @@
-"Tata AIG General Insurance Company LimitedRegistered Office: Peninsula Business Park, Tower A, 15th Floor, G.K. Marg, Lower Parel, Mumbai - 400013.IRDA Registration No.:108 CIN - U85110MH2000PLC128425 UIN:IRDAN108CP0041V01201819 PAN:AABCT3518QTEL +91-22-66699696 FAX +91-22-66546464 EMAIL: emarine.support@tataaig.comCertificate of Insurance"Unnamed: 0Unnamed: 1
-"In consideration of the Policyholder named herein paying to the Tata AIG General Insurance Company Ltd. (hereinafter called the Insurer) the premium as stated in the Schedule and in reliance upon the statements made by the Policyholder in theproposal including its attachments or otherwise, and the material incorporated therein, the Insurer agrees to provide insurance against loss damage liability or expense to the extent and in the manner herein provided subject to all terms, conditions,exceptions and warranties hereinafter set forth."
-"THE ASSURED:ART YARN EXPORTS (I) PVT LTD,9TH FLOOR, 'C' WING, GODREJ COLISEUM,BEHIND EVERARD NAGAR, SION-TROMBAY ROAD,,SION (EAST),,MAHARASHTRA,,MUMBAI,MAHARASHTRA,400022,INDIAGSTIN Number: 27AAECA7916L1ZCTO ORDER:"
-"CERT NO.C000807604"REF/LC NO:"BL/AWB/LR/RR NO:067CX23268"
-"CUR:AMOUNT INSURED:INR7,160,411.08USD92,811.55'SO VALUED'""CONVEYANCE:WAN HAI 502 V.E106""BL/AWB/LR/RR DATE:19 OCT 2022"
-"INVOICE NO.:AYG/5126""INVOICE DATE:11 OCT 2022""MODE OF SHIPMENT:Sea"
-FROM: NHAVA SHEVA,INDIA
-TO: PUERTO QUETZAL,GUATEMALA
-"SUBJECT-MATTER INSURED:418 CARTONS CONTAINING NE 20/2 100% COTTON CARDED RING SPUN YARN FOR WEAVING (TPI 16) AS PER DETAILS PROVIDED INCOMMERCIAL INVOICE NO.AYG/5126 NET WEIGHT: 18960.480 KGS GROSS WEIGHT: 20147.600 KGS""MARKS & NUMBERS:LOT NO. 102009 CARTON NO. 1890 TO 2307 GROSS WEIGHT: 20147.600 KGS NETWEIGHT : 18960.480 KGS CONTAINER NO : WHSU5749981 SEAL NO. WHLT741911"
-"CONSIGNEE:HILOS SAKILOMETRO 13 AL PACIFICO, VILLA, LOBOS. VILLA NUEVA NIT. 3301-4, GUATEMALA CENTRO AMERICA"
-LC DESCRIPTION
-
-INSURING CLAUSES AND CONDITIONS
-"Institute Cargo Clause (A) CL 382 01/01/09Institute Strikes Clause (Cargo) CL 386 01/01/09Institute War Clauses (Cargo) CL 385 01/01/09Institute Classification Clause CL 354 1/1/01Cargo ISM EndorsementSanction Limitation and Exclusion Clause (JC2010/014)Termination of Transit Clause (Terrorism) JC 2009/056 (01.01.09)Institute Radioactive Contamination, Chemical, Biological, Bio-Chemical, Electromagnetic Weapons Exclusion Clause CL.370 (10.11.03)Institute Cyber Attack Exclusion Clause CL.380 (10.11.03)Institute Standard Conditions for Cargo Contracts 1/4/82Important Notice Clause"
-"EXCESS:EXPORT; 0.5% of consignment value subject to minimum of INR 10,000 for each claim/occurrence."
-All terms,conditions,warranties and exclusions are as per open policy no 0865083277 duly stamped. Should there be any discrepancy between this Certificate of Insurance and the Open Policy, the Open Policy shall prevail.
-"SETTLING AGENT:AIG Seguros Guatemala, S.A.7 Avenida 12-23 Zona 9, Edificio Etisa 3er. Nivel, Guatemala City, Guatemala(502) 2285-5900Guatemala.MarineCLM@aig.com""CLAIM REPRESENTATIVE:AIG Seguros Guatemala, S.A.7 Avenida 12-23 Zona 9, Edificio Etisa 3er. Nivel, Guatemala City, Guatemala(502) 2285-5900Guatemala.MarineCLM@aig.com"
-"PREMIUM:INR 930.85TAXES AS APPLICABLE:INR 167.55"TOTAL PREMIUM:INR 1,098.40
-
-Claim, if any, payable at/by: GUATEMALAENCRYPTION:pus5ec2AX6ZTM44
-
-"IMPORTANTPROCEDURE IN THE EVENT OF LOSS OR DAMAGE FOR WHICH UNDERWRITERS MAY BE LIABLELIABILITY OF CARRIERS, BAILEES OR OTHER THIRD PARTIESINSTRUCTIONS FOR SURVEYIt is the duty of the Assured and their Agents, in all cases, to take such measures as may be reasonable for the purposeIn the event of loss or damage which may involve a claim under this insurance, immediate notice of such loss or damageof averting or minimising a loss and to ensure that all rights against Carriers, Bailees or other third parties are properlyshould be given to and a Survey Report obtained from the Company's representative at port of discharge or destination or ifpreserved and exercised. In particular, the Assured or their Agents are required:-there be no representative of the Company, the nearest Lloyd’s Agent.1. To claim immediately on the Carriers, Port Authorities or other Bailees for any missing packagesDOCUMENTATION OF CLAIMS2. In no circumstances, except under written protest, to give clean receipts where goods are in doubtful condition.To enable claims to be dealt with promptly, the Assured or their Agents are advised to submit all available supporting3. When delivery is made by Container, to ensure that the Container and its seals are examined immediately by theirdocuments without delay, including when applicable:-responsible official. If the Container is delivered damaged or with seals broken or missing or with seals other than1. Original policy of insurance.as stated in the shipping documents, to clause the delivery receipt accordingly and retain all defective or irregular2. Original or copy shipping invoices, together with shipping specification and/or weight notes.seals for subsequent identification3. Original Bill of Lading and/or other contract of carriage.4. To apply immediately for survey by Carriers’ or other Bailees’ Representatives if any loss or damage be apparent and4. Survey report or other documentary evidence to show the extent of the loss or damage.claim on the Carriers or other Bailees for any actual loss or damage found at such survey.5. Landing account and weight notes at final destination.5. To give notice in writing to the Carriers or other Bailees within 3 days of delivery if the loss or damage was not6. Correspondence exchanged with the Carriers and other Parties regarding their l iability for the loss or damageapparent at the time of taking delivery.NOTE - The Consignees or their Agents are recommended to make themselves familiar with the Regulations of the PortAuthorities at the port of discharge.For and on behalf of Tata AIG General Insurance Company LtdNOTE – This is an electronically generated document.For Policy Verificationhttps://emarinedeclhub.tataaig.com/marine/#/encrypt-pdfAUTHORISED REPRESENTATIVE"
+"Tata AIG General Insurance Company Limited
+Registered Office: Peninsula Business Park, Tower A, 15th Floor, G.K. Marg, Lower Parel, Mumbai - 400013.
+IRDA Registration No.:108 CIN - U85110MH2000PLC128425 UIN:IRDAN108CP0041V01201819 PAN:AABCT3518Q
+TEL +91-22-66699696 FAX +91-22-66546464 EMAIL: emarine.support@tataaig.com
+Certificate of Insurance"Unnamed: 0Unnamed: 1
+
+"In consideration of the Policyholder named herein paying to the Tata AIG General Insurance Company Ltd. (hereinafter called the Insurer) the premium as stated in the Schedule and in reliance upon the statements made by the Policyholder in the
+proposal including its attachments or otherwise, and the material incorporated therein, the Insurer agrees to provide insurance against loss damage liability or expense to the extent and in the manner herein provided subject to all terms, conditions,
+exceptions and warranties hereinafter set forth."
+
+"THE ASSURED:
+ART YARN EXPORTS (I) PVT LTD,
+9TH FLOOR, 'C' WING, GODREJ COLISEUM,BEHIND EVERARD NAGAR, SION-TROMBAY ROAD,,SION (EAST),,MAHARASHTRA,,
+MUMBAI,MAHARASHTRA,400022,INDIA
+GSTIN Number: 27AAECA7916L1ZC
+TO ORDER:"
+
+"CERT NO.
+C000807604"
+REF/LC NO:"BL/AWB/LR/RR NO:
+067CX23268"
+
+"CUR:AMOUNT INSURED:
+INR7,160,411.08
+USD92,811.55'SO VALUED'""CONVEYANCE:
+WAN HAI 502 V.E106""BL/AWB/LR/RR DATE:
+19 OCT 2022"
+
+"INVOICE NO.:
+AYG/5126""INVOICE DATE:
+11 OCT 2022""MODE OF SHIPMENT:
+Sea"
+
+FROM: NHAVA SHEVA,INDIA
+
+TO: PUERTO QUETZAL,GUATEMALA
+
+"SUBJECT-MATTER INSURED:
+418 CARTONS CONTAINING NE 20/2 100% COTTON CARDED RING SPUN YARN FOR WEAVING (TPI 16) AS PER DETAILS PROVIDED IN
+COMMERCIAL INVOICE NO.AYG/5126 NET WEIGHT: 18960.480 KGS GROSS WEIGHT: 20147.600 KGS"
+"MARKS & NUMBERS:
+LOT NO. 102009 CARTON NO. 1890 TO 2307 GROSS WEIGHT: 20147.600 KGS NET
+WEIGHT : 18960.480 KGS CONTAINER NO : WHSU5749981 SEAL NO. WHLT741911"
+
+"CONSIGNEE:
+HILOS SA
+KILOMETRO 13 AL PACIFICO, VILLA, LOBOS. VILLA NUEVA NIT. 3301-4, GUATEMALA CENTRO AMERICA"
+
+LC DESCRIPTION
+
+
+
+INSURING CLAUSES AND CONDITIONS
+
+"Institute Cargo Clause (A) CL 382 01/01/09
+Institute Strikes Clause (Cargo) CL 386 01/01/09
+Institute War Clauses (Cargo) CL 385 01/01/09
+Institute Classification Clause CL 354 1/1/01
+Cargo ISM Endorsement
+Sanction Limitation and Exclusion Clause (JC2010/014)
+Termination of Transit Clause (Terrorism) JC 2009/056 (01.01.09)
+Institute Radioactive Contamination, Chemical, Biological, Bio-Chemical, Electromagnetic Weapons Exclusion Clause CL.370 (10.11.03)
+Institute Cyber Attack Exclusion Clause CL.380 (10.11.03)
+Institute Standard Conditions for Cargo Contracts 1/4/82
+Important Notice Clause"
+
+"EXCESS:
+EXPORT; 0.5% of consignment value subject to minimum of INR 10,000 for each claim/occurrence."
+
+All terms,conditions,warranties and exclusions are as per open policy no 0865083277 duly stamped. Should there be any discrepancy between this Certificate of Insurance and the Open Policy, the Open Policy shall prevail.
+
+"SETTLING AGENT:
+AIG Seguros Guatemala, S.A.
+7 Avenida 12-23 Zona 9, Edificio Etisa 3er. Nivel, Guatemala City, Guatemala
+(502) 2285-5900
+Guatemala.MarineCLM@aig.com""CLAIM REPRESENTATIVE:
+AIG Seguros Guatemala, S.A.
+7 Avenida 12-23 Zona 9, Edificio Etisa 3er. Nivel, Guatemala City, Guatemala
+(502) 2285-5900
+Guatemala.MarineCLM@aig.com"
+
+"PREMIUM:INR 930.85
+TAXES AS APPLICABLE:INR 167.55"TOTAL PREMIUM:INR 1,098.40
+
+
+
+Claim, if any, payable at/by: GUATEMALAENCRYPTION:pus5ec2AX6ZTM44
+
+
+
+"IMPORTANT
+PROCEDURE IN THE EVENT OF LOSS OR DAMAGE FOR WHICH UNDERWRITERS MAY BE LIABLE
+LIABILITY OF CARRIERS, BAILEES OR OTHER THIRD PARTIESINSTRUCTIONS FOR SURVEY
+It is the duty of the Assured and their Agents, in all cases, to take such measures as may be reasonable for the purposeIn the event of loss or damage which may involve a claim under this insurance, immediate notice of such loss or damage
+of averting or minimising a loss and to ensure that all rights against Carriers, Bailees or other third parties are properlyshould be given to and a Survey Report obtained from the Company's representative at port of discharge or destination or if
+preserved and exercised. In particular, the Assured or their Agents are required:-there be no representative of the Company, the nearest Lloydï¿½s Agent.
+1. To claim immediately on the Carriers, Port Authorities or other Bailees for any missing packagesDOCUMENTATION OF CLAIMS
+2. In no circumstances, except under written protest, to give clean receipts where goods are in doubtful condition.To enable claims to be dealt with promptly, the Assured or their Agents are advised to submit all available supporting
+3. When delivery is made by Container, to ensure that the Container and its seals are examined immediately by theirdocuments without delay, including when applicable:-
+responsible official. If the Container is delivered damaged or with seals broken or missing or with seals other than1. Original policy of insurance.
+as stated in the shipping documents, to clause the delivery receipt accordingly and retain all defective or irregular2. Original or copy shipping invoices, together with shipping specification and/or weight notes.
+seals for subsequent identification3. Original Bill of Lading and/or other contract of carriage.
+4. To apply immediately for survey by Carriersï¿½ or other Baileesï¿½ Representatives if any loss or damage be apparent and4. Survey report or other documentary evidence to show the extent of the loss or damage.
+claim on the Carriers or other Bailees for any actual loss or damage found at such survey.5. Landing account and weight notes at final destination.
+5. To give notice in writing to the Carriers or other Bailees within 3 days of delivery if the loss or damage was not6. Correspondence exchanged with the Carriers and other Parties regarding their l iability for the loss or damage
+apparent at the time of taking delivery.
+NOTE - The Consignees or their Agents are recommended to make themselves familiar with the Regulations of the Port
+Authorities at the port of discharge.
+For and on behalf of Tata AIG General Insurance Company Ltd
+NOTE ï¿½ This is an electronically generated document.
+For Policy Verification
+https://emarinedeclhub.tataaig.com/marine/#/encrypt-
+pdf
+AUTHORISED REPRESENTATIVE"
+

@@ -22,7 +22,7 @@ from io import StringIO, BytesIO
 from os.path import splitext
 import math
 #from server import app
-openai.api_key = "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" 
+openai.api_key = "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" 
 prompt2 = "A continuacion se te presenta el fragmento de uan factura, necesito que lo traduzcas al español lo mas formal que puedas, ya que una factura es un documento legal, el fragmento es el siguiente: "#+"\""+text6+"\""
 prompt3 = "Necesito que traduzcas el siguiente texto a expañol, es el fragmento de una factura: "#+"\""+text6+"\""
 app = Flask(__name__)
@@ -153,10 +153,22 @@ def sofiai():
 
         # Reset stream position to beginning
         xlsx_stream.seek(0)
-        df = pd.DataFrame(newlinse)
+        forhtml = newlinse
+        for row in forhtml:
+            for i, item in enumerate(row):
+                row[i] = item.replace('\n', '<br>')
+                row[i] = item.replace('\r', '<br>')
+        for n in range(len(forhtml[0])):
+            forhtml[0][n].replace('\n', '<br>')
+            forhtml[0][n].replace('\r', '<br>')
+        for n in range(len(forhtml[1])):
+            forhtml[1][n].replace('\n', '<br>')
+            forhtml[1][n].replace('\r', '<br>')
+            
+        df = pd.DataFrame(forhtml)
         df_transposed = df.transpose()
         
-        html_table = df_transposed.to_html()
+        html_table = df_transposed.to_html(escape=False)
         return render_template('indexai.html',form = form, table=html_table)
         return send_file(xlsx_stream, download_name=f'{file_name}.xlsx', as_attachment=True)
         
