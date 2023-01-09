@@ -41,6 +41,11 @@ body {
   background-color: #2590EB;
   height: 100%;
 }
+.tit {
+  
+  font-family: "Open Sans", sans-serif;
+  font-size: var(--container-font-size);
+  color: #ffffff;}
 
 .wrapper {
   width: 100%;
@@ -212,7 +217,7 @@ body {
 </head> 
 
 <body>
-  
+  <H1 class="tit">ESTADOS DE CUENTA A EXCELL</H1>
   <div class="wrapper" id="container">
     <form method='POST' enctype='multipart/form-data'  >
       {{form.hidden_tag()}}

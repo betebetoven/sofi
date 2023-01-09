@@ -20,8 +20,9 @@ import html
 import pandas as pd
 from io import StringIO, BytesIO
 from os.path import splitext
+import math
 #from server import app
-openai.api_key = "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" 
+openai.api_key = "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" 
 prompt2 = "A continuacion se te presenta el fragmento de uan factura, necesito que lo traduzcas al español lo mas formal que puedas, ya que una factura es un documento legal, el fragmento es el siguiente: "#+"\""+text6+"\""
 prompt3 = "Necesito que traduzcas el siguiente texto a expañol, es el fragmento de una factura: "#+"\""+text6+"\""
 app = Flask(__name__)
@@ -63,33 +64,111 @@ def sofi():
     
     return render_template('index.html', form = form)
 
+
+
+########################################################################################################################
+
+
+
+
+
+
 @app.route("/sofiai", methods = ['GET',"POST"])
-def sofi2():
-    global cont
-    cont = cont+1
+def sofiai():
+    
     form = UploadFileForm()
-    dirtub = ""
     if form.validate_on_submit():
         file = form.file.data
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
-        dirtub = os.path.abspath("static/Files/"+secure_filename(file.filename))
-        time.sleep(5)
-        archivo = sofi_traduce2(dirtub)
-        archivo2 = os.path.abspath("static/Files/"+secure_filename(archivo +".xlsx"))
-        nombre = dirtub.split('/')
-        for n in range(4):
-            nombre[len(nombre)-1] = nombre[len(nombre)-1][:-1]
-        #aca va la eliminacion de los archivos indeseados en el servidor, los xls vamos a tener que retirarlos a mano
-        os.remove(f'static/Files/{secure_filename(file.filename)}')
+        input_filename = file.filename
+        _, file_extension = splitext(input_filename)
+        file_name, _ = splitext(input_filename)
+        df_list = tabula.read_pdf(file.stream, stream=True,lattice=True, pages='all', encoding='latin1')
+        df_list = [df.rename(columns=lambda x: x.replace("Unnamed: ", "")) for df in df_list]
         
+        new_list = []
+        fulltext = ""
+        text = ""
+        lines = []
+        for n in df_list:
 
+            csv_stream = n.to_csv(index=False,sep='|')
+            #print(csv_stream)
+            lines = csv_stream.split("|")
+            print("DATAFRAME------------------------\n")
+            #print(csv_stream)
+            
+            for t in lines:
+                #print('LINEA------------------------')
+                #print(t)
+                #print("LINEA------------------------\n")
+                if t != '':
+                    fulltext+=t
+                    
+                    fulltext+="\n-------------------\n"
+                
+        
+        with open('prompt.txt', 'r') as file:
+            text = file.read()
+        completo = ""
+        newlinse = [[]]
+        newlinse.append([])
+        
+        with open('ja2.txt', 'w',encoding='utf-8') as f:
+            for t in lines:
+                if t != '' and len(t) > 3:
+                    #newlinse.append(t)
+                    #print(t)
+                    com=traduccion(f'{text}\n{t}')+"\n"
+                    completo += com
+                    
+                    newlinse[1].append(com)
+                    newlinse[0].append(t)
+            f.write(completo)
+                
+            
+            
+                    
+        print(json.dumps(newlinse, indent=4, sort_keys=True))
+        df = pd.DataFrame({"strings": newlinse[0], "original": newlinse[1]})
+        
+        
+        
+        xlsx_stream = BytesIO()
 
-        response = send_file(nombre[len(nombre)-1]+".xlsx")
-        #os.remove(f'{nombre[len(nombre)-1]}.xlsx')
-        return response
+        # Create ExcelWriter and write DataFrames to separate sheets
+        writer = pd.ExcelWriter(xlsx_stream, engine='xlsxwriter')
+        df.to_excel(writer, index=False, sheet_name="Sheet1")
+        max_width = df["strings"].map(len).max()
+
+# Set the width of the first column to the maximum width
+        worksheet = writer.sheets["Sheet1"]
+        worksheet.set_column(0, 0,  math.sqrt(max_width))
+        for row in range(df.shape[0]):
+            worksheet.set_row(row, math.sqrt(max_width))
+        # Save and close the ExcelWriter
+        #for row in range(df.shape[0]):
+            #worksheet.set_wrap(row, 0, True)
+        writer.save()
+        writer.close()
+
+        # Reset stream position to beginning
+        xlsx_stream.seek(0)
+        df = pd.DataFrame(newlinse)
+        df_transposed = df.transpose()
+        
+        html_table = df_transposed.to_html()
+        return render_template('indexai.html',form = form, table=html_table)
+        return send_file(xlsx_stream, download_name=f'{file_name}.xlsx', as_attachment=True)
         
     
-    return render_template('index.html', form = form)
+    return render_template('indexai.html', form = form)
+
+########################################################################################################################
+
+
+
+
+
 
 
 
@@ -280,6 +359,7 @@ def sofi_traduce2(direccion):
     return nombre[len(nombre)-1]
     
 def traduccion(texto):
+    
     model = openai.Completion.create(engine="text-davinci-003",
     prompt=texto, 
     temperature=0.7, 
@@ -304,7 +384,10 @@ def traduccion(texto):
 
 
     print(json.dumps(facswell, indent=2))
-    return facswell[0]
+    total = ""
+    for n in facswell:
+        total = total + n + "\n"
+    return total
 
 
 

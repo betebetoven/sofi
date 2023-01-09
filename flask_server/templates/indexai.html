@@ -1,0 +1,556 @@
+
+<html lang="en"><head>
+
+    <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js"></script>
+    
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+    :root {
+    --container-font-size: 28px;
+    --container-background-color: #143982;
+    --btn-upload-background-color: #0d5eff;
+    --btn-upload-color: #ffffff;
+    --btn-upload-width: 225px;
+    --btn-upload-height: 80px;
+    --btn-upload-border-radius: 0.75em;
+    --btn-upload-transition-time: 50ms;
+    --progress-width: 50px;
+    --progress-height: 30px;
+    --progress-top: -40px;
+    --progress-arrow-color: #ffffff;
+    --progress-arrow-background-color: #f53060;
+    --progress-arrow-width: 8px;
+    --progress-arrow-height: 8px;
+    --check-width: 80px;
+    --check-height: 45px;
+    --check-stroke: 15px;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    background-color: #2590EB;
+    height: 100%;
+  }
+  .tit {
+    
+    font-family: "Open Sans", sans-serif;
+    font-size: var(--container-font-size);
+    color: #ffffff;}
+  
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-family: "Open Sans", sans-serif;
+    font-size: var(--container-font-size);
+    background-color: var(--container-background-color);
+   
+   
+    
+    overflow: hidden;
+  
+  
+  }
+  .wrapper .file-upload {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #FFFFFF;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%);
+    background-size: 100% 200%;
+    transition: all 1s;
+    color: #FFFFFF;
+    font-size: 100px;
+  }
+  .wrapper .file-upload input[type=file] {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .wrapper .file-upload:hover {
+    background-position: 0 -100%;
+    color: #2590EB;
+  }
+  
+  
+  
+  
+  .btn-upload {
+    color: var(--btn-upload-color);
+    fill: var(--btn-upload-color);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    background-color: var(--btn-upload-background-color);
+    width: var(--btn-upload-width);
+    height: var(--btn-upload-height);
+    padding: 0;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: var(--btn-upload-border-radius);
+    box-shadow: 0 0.7em 1.2em rgba(25, 25, 25, 0.5);
+  }
+  
+  .btn-upload:not(.btn-upload-uploading) {
+    transition: box-shadow var(--btn-upload-transition-time) ease-out,
+      transform var(--btn-upload-transition-time) ease-out;
+  }
+  
+  .btn-upload:not(.btn-upload-uploading):hover {
+    box-shadow: 0 0.7em 1.2em rgba(25, 25, 25, 0.8);
+  }
+  
+  .btn-upload:not(.btn-upload-uploading):active {
+    box-shadow: 0 0 0 rgba(25, 25, 25, 0.8);
+    transform: translateY(0.2em);
+  }
+  
+  .btn-upload > svg {
+    fill: inherit;
+  }
+  
+  .btn-upload > span {
+    color: inherit;
+    margin-left: 0.3em;
+  }
+  
+  .progress {
+    color: var(--progress-arrow-color);
+    font-family: inherit;
+    font-size: 50%;
+    background-color: var(--progress-arrow-background-color);
+    width: var(--progress-width);
+    height: var(--progress-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: var(--progress-top);
+    border-radius: 0.5em;
+    opacity: 0;
+    transform-origin: center bottom;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0.7em 1.2em rgba(25, 25, 25, 0.5));
+  }
+  
+  .progress:after {
+    content: "";
+    border-top: solid var(--progress-arrow-height) var(--progress-arrow-background-color);
+    border-bottom: 0;
+    border-left: solid calc(var(--progress-arrow-width) / 2) transparent;
+    border-right: solid calc(var(--progress-arrow-width) / 2) transparent;
+    position: absolute;
+    top: calc(100% - 1px);
+  }
+  
+  .check {
+    width: var(--check-width);
+    height: var(--check-height);
+    display: none;
+    position: absolute;
+    top: calc(50% - calc(var(--check-width) / 2));
+    left: calc(50% - calc(var(--check-height) / 2));
+    transform-origin: center bottom;
+    transform: rotate(-45deg);
+  }
+  
+  .check > span {
+    background-color: #ffffff;
+    display: block;
+    position: absolute;
+  }
+  
+  .check > span:first-child {
+    width: var(--check-stroke);
+    height: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  .check > span:last-child {
+    width: 0;
+    height: var(--check-stroke);
+    bottom: 0;
+    left: 0;
+  }
+
+
+
+
+
+  table {
+    
+    
+    border-collapse: collapse;
+    width: 800px;
+    height: 200px;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+tr {
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#header {
+    background-color: #16a085;
+    color: #fff;
+}
+
+h1 {
+    font-weight: 600;
+    text-align: center;
+    background-color: #16a085;
+    color: #fff;
+    padding: 10px 0px;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 768px) {
+    table {
+        width: 90%;
+    }
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  </style>
+  
+    
+  
+  </head> 
+  
+  <body>
+    <H1 class="tit">TRADUCCION DE FACTURAS</H1>
+    <div class="wrapper" id="container">
+      <form method='POST' enctype='multipart/form-data'  >
+        {{form.hidden_tag()}}
+              <div class="file-upload">
+                    <input id="file" name="file" required=""  accept="application/pdf" type="file" >
+                    <i class="fa fa-arrow-up"></i>  
+               </div>
+    
+               <div id="container1">
+                <button class="btn-upload" id="btn_upload" type="submit"  >
+                  <svg viewBox="0 0 640 512" width="32">
+                    <path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2 22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z"></path>
+                  </svg>
+                  <span>UPLOAD</span>
+                  <div class="progress"></div>
+                  <div class="check">
+                    <span></span>
+                    <span></span>
+                  </div>
+                </button>
+              </div>
+  
+  
+  
+  
+  
+  
+              </form>
+    </div>
+    <div class="tit">
+      {{ table | safe }}
+    </div>
+  
+    
+    
+  <script>
+  "use strict";
+  
+  const BTN_COLOR = "#ffffff";
+  const BTN_BACKGROUND_COLOR = "#0d5eff";
+  const BTN_WIDTH = 225;
+  const BTN_HEIGHT = 80;
+  const BTN_BORDER_RADIUS = "0.75em";
+  const BTN_SIZE = 180;
+  const ANIMATION_TIME = 0.4;
+  const UPLOADING_BACKGROUND_COLOR = "#ffffff";
+  const UPLOADING_WIDTH = 320;
+  const UPLOADING_HEIGHT = 30;
+  const DEFAULT_CONTAINER_BACKGROUND_COLOR = "#143982";
+  const DEFAULT_BTN_UPLOAD_BACKGROUND_COLOR = "#0d5eff";
+  const COMPLETE_CONTAINER_BACKGROUND_COLOR = "#005e02";
+  const COMPLETE_BTN_UPLOAD_BACKGROUND_COLOR = "#0fe600";
+  const COMPLETE_SIZE = 180;
+  const CHECK_WIDTH = "100%";
+  const CHECK_HEIGHT = "100%";
+  const PROGRESS_TIME = 2;
+  const container = document.querySelector("#container");
+  const btnUpload = document.querySelector("#btn_upload");
+  const progress = btnUpload.querySelector(".progress");
+  const check = btnUpload.querySelector(".check");
+  const check1 = btnUpload.querySelector(".check > span:first-child");
+  const check2 = btnUpload.querySelector(".check > span:last-child");
+  const tl = gsap.timeline();
+  
+  let uploading = false;
+  
+  function uploadStart() {
+    // The button will become circle
+    // The UPLOAD text will fade
+    tl.to(btnUpload, {
+      width: BTN_SIZE,
+      height: BTN_SIZE,
+      color: "transparent",
+      fill: "transparent",
+      borderRadius: "50%",
+      duration: ANIMATION_TIME,
+      ease: "elastic.out(1, 0.3)"
+    });
+    
+    // The button will become a progress bar
+    tl.to(btnUpload, {
+      backgroundColor: UPLOADING_BACKGROUND_COLOR,
+      width: UPLOADING_WIDTH,
+      height: UPLOADING_HEIGHT,
+      borderRadius: "0.25em",
+      duration: ANIMATION_TIME,
+      ease: "power2.out",
+    });
+    
+    // Render the progress "speech bubble"
+    tl.to(progress, {
+      display: "flex"
+    });
+    
+    // Show the progress "speech bubble" (Fade in)
+    tl.to(progress, {
+      opacity: 1,
+      duration: ANIMATION_TIME
+    });
+  }
+  
+  function uploadProcess() {
+    let uploadProgress = {
+      val: 0
+    };
+    
+    // Change the progress of upload
+    tl.to(uploadProgress, PROGRESS_TIME, {
+      val: 100,
+      ease: "power4.inOut",
+      onStart: function() {
+        // Tilt the progress "speech bubble"
+        tl.to(progress, {
+          transform: "translateX(" + (progress.clientWidth / -2) + "px) rotate(12deg)",
+          delay: 0,
+          ease: "power2.out"
+        }, "-=" + PROGRESS_TIME);
+      },
+      onUpdate: function() {
+        let value = Math.floor(uploadProgress.val);
+        
+        // Increase the value of the progress (blue colored progress on progress bar)
+        btnUpload.style.backgroundImage = "linear-gradient(to right, " +
+          BTN_BACKGROUND_COLOR + " 0 " + value + "%, transparent " + value + "% 0)";
+        
+        // Change the text of the progress "speech bubble"
+        progress.innerText = value + "%";
+        
+        // Change the position of the progress "speech bubble"
+        progress.style.left = (UPLOADING_WIDTH * (value / 100)) + "px";
+      },
+      onComplete: function() {
+        // Remove the tilting of the progress "speech bubble"
+        tl.to(progress, {
+          transform: "translateX(" + (progress.clientWidth / -2) + "px)",
+        });
+        
+        uploadEnd();
+      }
+    });
+  }
+  
+  function uploadEnd() {
+    // Hide the progress "speech bubble" (Fade out)
+    tl.to(progress, {
+      opacity: 0,
+      duration: ANIMATION_TIME,
+      ease: "power2.out",
+      onComplete: function() {
+        btnUpload.style.backgroundImage = null;
+        btnUpload.style.backgroundColor = BTN_BACKGROUND_COLOR;
+      }
+    });
+  
+    // Change the background color of the container
+    tl.to(container, {
+      backgroundColor: COMPLETE_CONTAINER_BACKGROUND_COLOR,
+      duration: ANIMATION_TIME,
+      ease: "power2.out",
+    });
+  
+    // Change the background color, as well as the shape of the upload button
+    // As the same time as the background color of the contaianer changes
+    tl.to(btnUpload, {
+      backgroundColor: COMPLETE_BTN_UPLOAD_BACKGROUND_COLOR,
+      width: COMPLETE_SIZE,
+      height: COMPLETE_SIZE,
+      borderRadius: "50%",
+      duration: ANIMATION_TIME,
+      ease: "back.out",
+      onComplete: function() {
+        check.style.display = "block";
+      }
+    }, "-=" + ANIMATION_TIME);
+  
+    // Show the tail of the completed check mark
+    tl.to(check1, {
+      height: CHECK_HEIGHT,
+      duration: ANIMATION_TIME,
+      ease: "power2.out"
+    });
+  
+    // Show the body of the completed check mark
+    tl.to(check2, {
+      width: CHECK_WIDTH,
+      duration: ANIMATION_TIME,
+      ease: "bounce.out",
+      onComplete: function() {
+        setTimeout(function() {
+          // After 5000 milliseconds, return the button and
+          // the container into original state
+          initialize();
+        }, 5000);
+      }
+    });
+  }
+  
+  function initialize() {
+    uploading = false;
+  
+    btnUpload.style.backgroundImage = null;
+  
+    progress.style.left = "0px";
+    progress.innerText = "";
+    
+    tl.to(container, {
+      backgroundColor: DEFAULT_CONTAINER_BACKGROUND_COLOR,
+      duration: ANIMATION_TIME,
+      ease: "power2.out",
+    });
+  
+    tl.to(btnUpload, {
+      color: BTN_COLOR,
+      fill: BTN_COLOR,
+      backgroundColor: DEFAULT_BTN_UPLOAD_BACKGROUND_COLOR,
+      width: BTN_WIDTH,
+      height: BTN_HEIGHT,
+      borderRadius: BTN_BORDER_RADIUS,
+      duration: ANIMATION_TIME,
+      ease: "bounce.out"
+    }, "-=" + ANIMATION_TIME);
+  
+    tl.to(check, {
+      opacity: 0,
+      duration: ANIMATION_TIME,
+      ease: "bounce.out",
+      onComplete: function() {
+        check.style.opacity = 1;
+        check.style.display = "none";
+        
+        check1.style.height = "0px";
+        
+        check2.style.width = "0px";
+      }
+    }, "-=" + ANIMATION_TIME);
+  }
+  
+  btnUpload.addEventListener("click", function() {
+    if (uploading === true) {
+      return;
+    }
+    
+    uploading = true;
+    
+    this.classList.add("btn-upload-uploading");
+    
+    uploadStart();
+    uploadProcess();
+  });
+  
+  
+  
+  
+  
+  function sendAjaxRequest() {
+    var fileInput = document.getElementById("file");
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append("file", file);
+  
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:5000/sofi", true);
+    xhr.setRequestHeader("Content-Type", "multipart/form-data");
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log(file);
+        console.log(formData);
+        console.log("Server response received");
+      } else {
+        console.error("Error receiving server response");
+      }
+    };
+    xhr.send(formData);
+  }
+  
+  
+  
+  </script>
+    
+    
+    
+    
+     
+    </body>
+  </html>
