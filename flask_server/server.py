@@ -113,22 +113,19 @@ def sofiai():
         newlinse = [[]]
         newlinse.append([])
         
-        with open('ja2.txt', 'w',encoding='utf-8') as f:
-            for t in lines:
-                if t != '' and len(t) > 3:
-                    #newlinse.append(t)
-                    #print(t)
-                    com=traduccion(f'{text}\n{t}')+"\n"
-                    completo += com
-                    
-                    newlinse[1].append(com)
-                    newlinse[0].append(t)
-            f.write(completo)
+        
+        for t in lines:
+            if t != '' and len(t) > 3:
+                com=traduccion(f'{text}\n{t}')+"\n"
+                completo += com
+                newlinse[1].append(com)
+                newlinse[0].append(t)
+            
                 
             
             
                     
-        print(json.dumps(newlinse, indent=4, sort_keys=True))
+        #print(json.dumps(newlinse, indent=4, sort_keys=True))
         df = pd.DataFrame({"strings": newlinse[0], "original": newlinse[1]})
         
         
@@ -395,7 +392,7 @@ def traduccion(texto):
             facswell.append(ansi_string)
 
 
-    print(json.dumps(facswell, indent=2))
+    #print(json.dumps(facswell, indent=2))
     total = ""
     for n in facswell:
         total = total + n + "\n"
