@@ -22,7 +22,7 @@ from io import StringIO, BytesIO
 from os.path import splitext
 import math
 #from server import app
-openai.api_key = "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" 
+openai.api_key = "api" 
 prompt2 = "A continuacion se te presenta el fragmento de uan factura, necesito que lo traduzcas al español lo mas formal que puedas, ya que una factura es un documento legal, el fragmento es el siguiente: "#+"\""+text6+"\""
 prompt3 = "Necesito que traduzcas el siguiente texto a expañol, es el fragmento de una factura: "#+"\""+text6+"\""
 app = Flask(__name__)
