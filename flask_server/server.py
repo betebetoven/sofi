@@ -22,7 +22,7 @@ from io import StringIO, BytesIO
 from os.path import splitext
 import math
 #from server import app
-openai.api_key = "api" 
+openai.api_key = "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" 
 prompt2 = "A continuacion se te presenta el fragmento de uan factura, necesito que lo traduzcas al español lo mas formal que puedas, ya que una factura es un documento legal, el fragmento es el siguiente: "#+"\""+text6+"\""
 prompt3 = "Necesito que traduzcas el siguiente texto a expañol, es el fragmento de una factura: "#+"\""+text6+"\""
 app = Flask(__name__)
@@ -112,12 +112,25 @@ def sofiai():
         completo = ""
         newlinse = [[]]
         newlinse.append([])
+        newlinse.append([])
         
         
         for t in lines:
             if t != '' and len(t) > 3:
-                com=traduccion2(f'{text}\n{t}')+"\n"
-                completo += com
+                com = ""
+                if len(t) > 200:
+                    com=traduccion2(f'{text}\n{t}')
+                    newlinse[2].append("traduccion2")
+                    
+                elif len(t) > 40:
+                    com=traduccion1(f'{text}\n{t}')
+                    newlinse[2].append("traduccion1")
+                else:
+                    com=traduccion0(f'{text}\n{t}')
+                    newlinse[2].append("traduccion0")
+                    
+                
+                
                 newlinse[1].append(com)
                 newlinse[0].append(t)
             
@@ -383,26 +396,26 @@ def traduccion1(texto):
     engine="text-davinci-003",
     prompt=texto, 
     temperature=0.5, 
-    max_tokens=1024, 
+    max_tokens=100, 
     top_p=1, 
     frequency_penalty=0, 
     presence_penalty=0)
     
     
-    print(model.get("choices")[0].get("text"))
+    
     return model.get("choices")[0].get("text")
 def traduccion0(texto):
     model = openai.Completion.create(
     engine="text-davinci-003",
     prompt=texto, 
     temperature=0.2, 
-    max_tokens=1024, 
+    max_tokens=40, 
     top_p=1, 
     frequency_penalty=0, 
     presence_penalty=0)
     
     
-    print(model.get("choices")[0].get("text"))
+    
     return model.get("choices")[0].get("text")
     
 def traduccion(texto):
