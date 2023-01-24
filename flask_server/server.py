@@ -116,7 +116,7 @@ def sofiai():
         
         for t in lines:
             if t != '' and len(t) > 3:
-                com=traduccion(f'{text}\n{t}')+"\n"
+                com=traduccion2(f'{text}\n{t}')+"\n"
                 completo += com
                 newlinse[1].append(com)
                 newlinse[0].append(t)
@@ -153,14 +153,12 @@ def sofiai():
         forhtml = newlinse
         for row in forhtml:
             for i, item in enumerate(row):
-                row[i] = item.replace('\n', '<br>')
-                row[i] = item.replace('\r', '<br>')
-        for n in range(len(forhtml[0])):
-            forhtml[0][n].replace('\n', '<br>')
-            forhtml[0][n].replace('\r', '<br>')
-        for n in range(len(forhtml[1])):
-            forhtml[1][n].replace('\n', '<br>')
-            forhtml[1][n].replace('\r', '<br>')
+                row[i] = '<br>'.join(item.split('\n'))
+                row[i] = '<br>'.join(item.split('\r'))
+                row[i] = '<br>'.join(item.split('\n\n'))
+                print(row[i])
+       
+            
             
         df = pd.DataFrame(forhtml)
         df_transposed = df.transpose()
@@ -366,6 +364,46 @@ def sofi_traduce2(direccion):
     workbook.close()
     os.remove(f'{nombre[len(nombre)-1]}.txt')
     return nombre[len(nombre)-1]
+    
+def traduccion2(texto):
+    model = openai.Completion.create(
+    engine="text-davinci-003",
+    prompt=texto, 
+    temperature=1.0, 
+    max_tokens=1024, 
+    top_p=1, 
+    frequency_penalty=0, 
+    presence_penalty=0)
+    
+    
+    #print(model.get("choices")[0].get("text"))
+    return model.get("choices")[0].get("text")
+def traduccion1(texto):
+    model = openai.Completion.create(
+    engine="text-davinci-003",
+    prompt=texto, 
+    temperature=0.5, 
+    max_tokens=1024, 
+    top_p=1, 
+    frequency_penalty=0, 
+    presence_penalty=0)
+    
+    
+    print(model.get("choices")[0].get("text"))
+    return model.get("choices")[0].get("text")
+def traduccion0(texto):
+    model = openai.Completion.create(
+    engine="text-davinci-003",
+    prompt=texto, 
+    temperature=0.2, 
+    max_tokens=1024, 
+    top_p=1, 
+    frequency_penalty=0, 
+    presence_penalty=0)
+    
+    
+    print(model.get("choices")[0].get("text"))
+    return model.get("choices")[0].get("text")
     
 def traduccion(texto):
     
