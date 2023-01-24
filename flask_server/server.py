@@ -107,7 +107,7 @@ def sofiai():
                     fulltext+="\n-------------------\n"
                 
         
-        with open('prompt.txt', 'r') as file:
+        with open('prompt2.txt', 'r') as file:
             text = file.read()
         completo = ""
         newlinse = [[]]
