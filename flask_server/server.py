@@ -22,7 +22,7 @@ from io import StringIO, BytesIO
 from os.path import splitext
 import math
 #from server import app
-openai.api_key = "api" 
+openai.api_key = "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" 
 prompt2 = "A continuacion se te presenta el fragmento de uan factura, necesito que lo traduzcas al español lo mas formal que puedas, ya que una factura es un documento legal, el fragmento es el siguiente: "#+"\""+text6+"\""
 prompt3 = "Necesito que traduzcas el siguiente texto a expañol, es el fragmento de una factura: "#+"\""+text6+"\""
 app = Flask(__name__)
@@ -129,8 +129,13 @@ def sofiai():
                     com=traduccion0(f'{text}\n{t}')
                     newlinse[2].append("traduccion0")
                     
+                com = com.replace('\r', '\n',)
+                com = com.replace('\n', '<br>')
+                com = com.replace('\r\n', '<br>')
                 
-                
+                t = t.replace('\r', '\n',)
+                t = t.replace('\n', '<br>')
+                t = t.replace('\r\n', '<br>')
                 newlinse[1].append(com)
                 newlinse[0].append(t)
             
@@ -164,12 +169,12 @@ def sofiai():
         # Reset stream position to beginning
         xlsx_stream.seek(0)
         forhtml = newlinse
-        for row in forhtml:
+        """for row in forhtml:
             for i, item in enumerate(row):
                 row[i] = '<br>'.join(item.split('\n'))
                 row[i] = '<br>'.join(item.split('\r'))
-                row[i] = '<br>'.join(item.split('\n\n'))
-                print(row[i])
+                row[i] = '<br>'.join(item.split('\n\n'))"""
+                
        
             
             

@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js"></script>
-    
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@latest/dist/html2canvas.min.js"></script>
   <style>
     @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
     :root {
@@ -298,11 +301,81 @@ tr:hover {
   
               </form>
     </div>
-    <div class="tit">
-      {{ table | safe }}
-    </div>
-  
+    <div  class="tit">
+      
+        {{ table | safe }}
     
+     
+      <button onclick="generate()" id="generate-pdf">Generate PDF</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    <script >
+      function generate() {
+        var doc = new jsPDF('p', 'pt', 'letter');
+        var htmlstring = '';
+        var tempVarToCheckPageHeight = 0;
+        var pageHeight = 0;
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector  
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"  
+                return true
+            }
+        };
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        var y = 20;
+        doc.setLineWidth(2);
+        doc.text(200, y = y + 30, "TRADUCCION");
+    
+        var table = document.getElementsByTagName("table")[0]; // get the table element by its tag name
+        var options = {
+            html: table,
+            startY: 70,
+            theme: 'grid',
+            columnStyles: {
+                0: {
+                    cellWidth: 10,
+                },
+                1: {
+                    cellWidth: 270,
+                },
+                2: {
+                    cellWidth: 270,
+                },
+                3: {
+                    cellWidth: 10,
+                },
+                
+            },
+            styles: {
+                minCellHeight: 10
+            },
+            didDrawPage: function (data) {
+                if (data.pageCount > 1) {
+                    doc.setPage(data.pageCount);
+                    doc.text("Page " + data.pageCount, data.settings.margin.left, doc.internal.pageSize.height - 30);
+                }
+            }
+        }
+        doc.autoTable(options);
+        var finalY = doc.autoTable.previous.finalY;
+        if (finalY > doc.internal.pageSize.height) {
+            doc.addPage();
+        }
+        doc.save('TRADUCCION.pdf');
+    }
+    
+
+    </script>
     
   <script>
   "use strict";
@@ -547,8 +620,10 @@ tr:hover {
   
   
   </script>
-    
-    
+  
+  
+
+ 
     
     
      
